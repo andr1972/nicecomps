@@ -1,9 +1,5 @@
 unit frmLoupe;
 
-{$IFDEF FPC}
-  {$MODE Delphi}
-{$ENDIF}
-
 interface
 
 uses
@@ -58,7 +54,7 @@ type
     procedure cbGridClick(Sender: TObject);
     procedure VScrollChange(Sender: TObject);
     procedure HScrollChange(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormClose(Sender: TObject; var AAction: TCloseAction);
     procedure btnCalcClick(Sender: TObject);
     procedure btnNotepaClick(Sender: TObject);
     procedure PaintBoxMouseUp(Sender: TObject; Button: TMouseButton;
@@ -122,10 +118,6 @@ var
 implementation
 
 uses
-{$IFNDEF FPC}
-  jpeg,
-{$ELSE}
-{$ENDIF}
   Math, Types, ColorDesc, ShellAPI, Clipbrd, dlgAbout, IniFiles;
 
 {$R *.lfm}
@@ -146,16 +138,16 @@ begin
   Screen.Cursors[crHandHold] := LoadCursor(HInstance, 'HAND_HOLD');
 end;
 
-function ColorToStr(Color:TColor):string;
+function ColorToStr(AColor: TColor):string;
 begin
-  with TRGBQuad(Color) do
+  with TRGBQuad(AColor) do
   result:=IntToHex(rgbBlue,2)+'.'+IntToHex(rgbGreen,2)+'.'+IntToHex(rgbRed,2)
 end;
 
-function DifferColor(Color:TColor):TColor;
+function DifferColor(AColor: TColor):TColor;
 var
  resRgb:TRGBQuad;
- colRgb:TRGBQuad absolute Color;
+ colRgb:TRGBQuad absolute AColor;
 begin
   if colRgb.rgbBlue>$80 then resRgb.rgbBlue:=0 else resRgb.rgbBlue:=$FF;
   if colRgb.rgbGreen>$80 then resRgb.rgbGreen:=0 else resRgb.rgbGreen:=$FF;
@@ -362,7 +354,7 @@ end;
 procedure TLoupeForm.UpdateStatusInfo(Pos: TPoint);
 var
   imgX,imgY:integer;
-  Color,NearestColor: TColor;
+  AColor,NearestColor: TColor;
   Names: TStringList;
   str: string;
   i: integer;
@@ -378,21 +370,21 @@ begin
   StatusBar.Panels[0].Text:='X: '+IntToStr(imgX);
   StatusBar.Panels[1].Text:='Y: '+IntToStr(imgY);
   //avoid grid
-  Color:=ColorInPos(Pos);
-  if Color=-1 then
+  AColor:=ColorInPos(Pos);
+  if AColor=-1 then
   begin
     StatusBar.Panels[2].Text:='';
     StatusBar.Panels[3].Text:='';
   end else
   begin
-    StatusBar.Panels[2].Text:='RGB: '+ColorToStr(Color);
+    StatusBar.Panels[2].Text:='RGB: '+ColorToStr(AColor);
     Names:=TStringList.Create;
-    NearestColor:=DescribeColor(Color, Names);
+    NearestColor:=DescribeColor(AColor, Names);
     str:='';
     if Names.Count>0 then str:=Names[0];
-    if NearestColor<>Color then
+    if NearestColor<>AColor then
     begin
-      DiffRGB(Color,NearestColor, dR,dG,dB);
+      DiffRGB(AColor,NearestColor, dR,dG,dB);
       str:=str+Format(' (%d,%d,%d)',[dR,dG,dB]);
     end;
     for i:=1 to Names.Count-1 do str:=str+','+Names[i];
@@ -404,14 +396,14 @@ end;
 procedure TLoupeForm.ShowGrid;
 var
   i:integer;
-  Color: TColor;
+  AColor: TColor;
   Src: TPoint;
   W,H:integer;
 begin
-  Color := cl3DDkShadow;
-  if ColorToRgb(Color)=clBlack then Color:=clDkGray;
+  AColor := cl3DDkShadow;
+  if ColorToRgb(AColor)=clBlack then AColor:=clDkGray;
   PaintBox.Canvas.Pen.Mode := pmXor;
-  PaintBox.Canvas.Pen.Color := Color;
+  PaintBox.Canvas.Pen.Color := AColor;
   Src:=GetSrcMax;
   //if Src smaller than PaintBox, FSrcPos can be omited
   W:=min(PaintBox.Width div FScale,Src.X);
@@ -456,7 +448,7 @@ begin
   Invalidate;
 end;
 
-procedure TLoupeForm.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TLoupeForm.FormClose(Sender: TObject; var AAction: TCloseAction);
 begin
   if FDrawedRect then DrawMouseFrame;
   FDrawedRect:=false;

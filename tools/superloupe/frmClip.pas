@@ -1,9 +1,5 @@
 unit frmClip;
 
-{$IFDEF FPC}
-  {$MODE Delphi}
-{$ENDIF}
-
 interface
 
 uses
@@ -53,10 +49,6 @@ var
 implementation
 
 uses
-{$IFNDEF FPC}
-  jpeg,
-{$ELSE}
-{$ENDIF}
   frmLoupe, Types, Clipbrd;
 
 {$R *.lfm}

@@ -1,0 +1,7 @@
+1.0.2 2010-08-01 compiled with iPack 1.0.2
+  About dialog
+2.0 2011-11-19 (Synchronized with iPack version)
+  Html Colors
+2.1 2012-05-10
+  Can not track mouse when timer is turn on
+  Can be always on top

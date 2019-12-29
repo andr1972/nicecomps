@@ -1,5 +1,5 @@
 //MIT License
-unit noteComps;
+unit NicePages;
 
 {$mode objfpc}{$H+}
 
@@ -156,6 +156,7 @@ type
     property OnCloseQuery: TCloseQueryEvent read FOnCloseQuery write FOnCloseQuery;
     property OnClose: TCloseEvent read FOnClose write FOnClose;
     property OnDrawTab: TDrawTabEvent read FOnDrawTab write FOnDrawTab;
+    property Align;
   end;
 
 implementation
@@ -334,10 +335,6 @@ begin
         end;
         if (i<>FPageIndex) or  not FIsMoved then
         begin
-          if i = FPageIndex then
-            ACanvas.Font.Quality := fqDefault
-          else
-            ACanvas.Font.Quality := fqNonAntialiased;
           ACanvas.TextRect(R, R.Left+7, R.Top+2,
             (Notebook.FSheets[i] as TNiceSheet).Caption);
         end;
@@ -755,7 +752,6 @@ begin
   Height := 100;
   FSheets := TObjectList.Create(True);
   Font.Size := 10;
-  Font.Quality := fqNonAntialiased;
   FTabPosition := tpTop;
   FTabHeight := 21;
   FTabs := TNiceTabs.Create(Self);

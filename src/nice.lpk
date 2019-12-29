@@ -8,7 +8,7 @@
       <Version Value="11"/>
       <PathDelim Value="\"/>
       <SearchPaths>
-        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)\"/>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
     </CompilerOptions>
     <Version Minor="9"/>
@@ -18,8 +18,8 @@
         <UnitName Value="nicegrid"/>
       </Item1>
       <Item2>
-        <Filename Value="notecomps.pas"/>
-        <UnitName Value="noteComps"/>
+        <Filename Value="nicepages.pas"/>
+        <UnitName Value="nicepages"/>
       </Item2>
       <Item3>
         <Filename Value="niceRegister.pas"/>
@@ -42,5 +42,8 @@
       <Version Value="2"/>
       <UseFileFilters Value="True"/>
     </PublishOptions>
+    <CustomOptions Items="ExternHelp" Version="2">
+      <_ExternHelp Items="Count"/>
+    </CustomOptions>
   </Package>
 </CONFIG>

@@ -1,7 +1,7 @@
 //MIT License
 
 {$mode objfpc}{$H+}
-unit nicegrid;
+unit NiceGrid;
 
 interface
 

@@ -8,7 +8,7 @@ unit nice;
 interface
 
 uses
-  nicegrid, noteComps, niceRegister, LazarusPackageIntf;
+  nicegrid, NicePages, niceRegister, LazarusPackageIntf;
 
 implementation
 

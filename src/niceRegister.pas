@@ -9,7 +9,7 @@ implementation
 uses
   Classes,
   LResources,
-  nicegrid, noteComps;
+  NiceGrid, NicePages;
 
 procedure Register;
 begin

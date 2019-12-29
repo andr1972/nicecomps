@@ -1,0 +1,8 @@
+backup/
+lib/
+*.exe
+*.dbg
+*.lps
+/demo/installed/installed
+/demo/installed/installed.res
+

@@ -16,17 +16,37 @@ type
     actFileClosePage: TAction;
     actFileNew: TAction;
     actFileOpen: TAction;
+    actFileOpenNice: TAction;
+    actFileSave: TAction;
+    actFileSaveNice: TAction;
+    actFileSelectFolder: TAction;
+    actFileselectFolderNice: TAction;
     actlFile: TActionList;
     imglFile16: TImageList;
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
     miFileClosePage: TMenuItem;
     miFileNew: TMenuItem;
     NicePages1: TNicePages;
     NiceGrid1: TNiceGrid;
+    OpenDialog: TOpenDialog;
+    SaveDialog: TSaveDialog;
+    SelectDirectoryDialog: TSelectDirectoryDialog;
     procedure actFileClosePageExecute(Sender: TObject);
     procedure actFileNewExecute(Sender: TObject);
+    procedure actFileOpenExecute(Sender: TObject);
+    procedure actFileOpenNiceExecute(Sender: TObject);
+    procedure actFileSaveExecute(Sender: TObject);
+    procedure actFileSaveNiceExecute(Sender: TObject);
+    procedure actFileSelectFolderExecute(Sender: TObject);
+    procedure actFileselectFolderNiceExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
@@ -55,6 +75,39 @@ begin
   sheet.FocusedControl := grid;
   grid.Align:=alClient;
   sheet.Caption:='Grid'+IntToStr(NicePages1.PageCount);
+end;
+
+procedure TForm1.actFileOpenExecute(Sender: TObject);
+begin
+  if OpenDialog.Execute then
+    ShowMessage(OpenDialog.FileName);
+end;
+
+procedure TForm1.actFileOpenNiceExecute(Sender: TObject);
+begin
+  //
+end;
+
+procedure TForm1.actFileSaveExecute(Sender: TObject);
+begin
+  if SaveDialog.Execute then
+    ShowMessage(SaveDialog.FileName);
+end;
+
+procedure TForm1.actFileSaveNiceExecute(Sender: TObject);
+begin
+  //
+end;
+
+procedure TForm1.actFileSelectFolderExecute(Sender: TObject);
+begin
+  if SelectDirectoryDialog.Execute then
+    ShowMessage(SelectDirectoryDialog.FileName);
+end;
+
+procedure TForm1.actFileselectFolderNiceExecute(Sender: TObject);
+begin
+  //
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);

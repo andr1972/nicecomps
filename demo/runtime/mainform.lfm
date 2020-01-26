@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 620
+  Left = 149
   Height = 548
-  Top = 176
+  Top = 111
   Width = 754
   Caption = 'Form1'
   KeyPreview = True

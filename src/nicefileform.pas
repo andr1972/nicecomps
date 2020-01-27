@@ -6,7 +6,8 @@ unit NiceFileForm;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, VirtualTrees;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComboEx,
+  VirtualTrees;
 
 type
 
@@ -16,7 +17,9 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
+    ComboBoxEx1: TComboBoxEx;
     ImageList: TImageList;
+    Label1: TLabel;
     OpenDialog1: TOpenDialog;
     SelectDirectoryDialog1: TSelectDirectoryDialog;
     VirtualStringTree1: TVirtualStringTree;

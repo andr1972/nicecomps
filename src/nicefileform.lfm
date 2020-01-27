@@ -76,6 +76,35 @@ object Form2: TForm2
     OnClick = Button3Click
     TabOrder = 3
   end
+  object Label1: TLabel
+    Left = 102
+    Height = 15
+    Top = 301
+    Width = 51
+    Caption = 'Filename:'
+    ParentColor = False
+  end
+  object ComboBoxEx1: TComboBoxEx
+    Left = 168
+    Height = 24
+    Top = 296
+    Width = 248
+    ItemHeight = 16
+    ItemsEx = <    
+      item
+        Caption = 'ItemEx0'
+      end    
+      item
+        Caption = 'ItemEx1'
+      end    
+      item
+        Caption = 'ItemEx2'
+      end    
+      item
+        Caption = 'ItemEx3'
+      end>
+    TabOrder = 4
+  end
   object OpenDialog1: TOpenDialog
     left = 68
     top = 37

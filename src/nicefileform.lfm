@@ -1,7 +1,7 @@
 object Form2: TForm2
-  Left = 275
+  Left = 234
   Height = 425
-  Top = 177
+  Top = 163
   Width = 783
   Caption = 'Open existing file'
   ClientHeight = 425
@@ -143,28 +143,14 @@ object Form2: TForm2
       TabOrder = 1
       Text = 'ComboBox1'
     end
-    object Button10: TButton
-      Left = 11
-      Height = 25
-      Top = 39
-      Width = 64
-      Caption = 'Organize'
-      TabOrder = 2
-    end
-    object Button11: TButton
-      Left = 88
-      Height = 25
-      Top = 39
-      Width = 75
-      Caption = 'New folder'
-      TabOrder = 3
-    end
     object SpeedButton1: TSpeedButton
       Left = 0
       Height = 28
-      Top = 1
+      Top = 0
       Width = 28
-      Images = ImageList24
+      Color = clActiveCaption
+      Flat = True
+      Images = ImageList16
       ImageIndex = 2
     end
     object SpeedButton8: TSpeedButton
@@ -250,27 +236,33 @@ object Form2: TForm2
     end
   end
   object SpeedButton2: TSpeedButton
-    Left = 26
+    Left = 27
     Height = 28
     Top = 0
     Width = 28
-    Images = ImageList24
+    Color = clDefault
+    Flat = True
+    Images = ImageList16
     ImageIndex = 4
   end
   object SpeedButton3: TSpeedButton
-    Left = 52
+    Left = 54
     Height = 28
     Top = 0
     Width = 22
-    Images = ImageList24
+    Color = clDefault
+    Flat = True
+    Images = ImageList16
     ImageIndex = 5
   end
   object SpeedButton4: TSpeedButton
-    Left = 72
+    Left = 75
     Height = 28
     Top = 0
     Width = 28
-    Images = ImageList24
+    Color = clActiveCaption
+    Flat = True
+    Images = ImageList16
     ImageIndex = 3
   end
   object SpeedButton5: TSpeedButton
@@ -282,7 +274,7 @@ object Form2: TForm2
     ImageIndex = 6
   end
   object SpeedButton6: TSpeedButton
-    Left = 544
+    Left = 552
     Height = 28
     Top = 0
     Width = 28
@@ -304,6 +296,28 @@ object Form2: TForm2
     Width = 28
     Images = ImageList24
     ImageIndex = 10
+  end
+  object SpeedButton10: TSpeedButton
+    Left = 16
+    Height = 28
+    Top = 32
+    Width = 80
+    BidiMode = bdRightToLeft
+    Caption = 'Organize'
+    Color = clDefault
+    Flat = True
+    Images = ImageList16
+    ImageIndex = 5
+    ParentBidiMode = False
+  end
+  object SpeedButton11: TSpeedButton
+    Left = 112
+    Height = 28
+    Top = 32
+    Width = 70
+    Caption = 'New folder'
+    Color = clDefault
+    Flat = True
   end
   object OpenDialog1: TOpenDialog
     left = 48

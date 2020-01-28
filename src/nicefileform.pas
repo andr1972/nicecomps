@@ -30,8 +30,6 @@ type
 
   TForm2 = class(TForm)
     Button1: TButton;
-    Button10: TButton;
-    Button11: TButton;
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
@@ -50,6 +48,8 @@ type
     Panel3: TPanel;
     SelectDirectoryDialog1: TSelectDirectoryDialog;
     SpeedButton1: TSpeedButton;
+    SpeedButton10: TSpeedButton;
+    SpeedButton11: TSpeedButton;
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     SpeedButton4: TSpeedButton;

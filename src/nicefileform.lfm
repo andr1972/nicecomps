@@ -42,6 +42,11 @@ object Form2: TForm2
       Height = 76
       Top = 24
       Width = 164
+      Colors.DropMarkColor = clBlue
+      Colors.DropTargetColor = clBlue
+      Colors.DropTargetBorderColor = clBlue
+      Colors.FocusedSelectionColor = clBlue
+      Colors.FocusedSelectionBorderColor = clBlue
       DefaultText = 'Node'
       Header.AutoSizeIndex = 0
       Header.Columns = <      
@@ -199,6 +204,7 @@ object Form2: TForm2
       Width = 28
       Images = ImageList24
       ImageIndex = 6
+      OnClick = SpeedButton5Click
     end
     object SpeedButton6: TSpeedButton
       Left = 552
@@ -263,6 +269,11 @@ object Form2: TForm2
       Top = 1
       Width = 145
       Align = alLeft
+      Colors.DropMarkColor = clSkyBlue
+      Colors.DropTargetColor = clSkyBlue
+      Colors.DropTargetBorderColor = clSkyBlue
+      Colors.FocusedSelectionColor = clSkyBlue
+      Colors.FocusedSelectionBorderColor = clSkyBlue
       DefaultText = 'Node'
       Header.AutoSizeIndex = 0
       Header.Columns = <>
@@ -276,8 +287,14 @@ object Form2: TForm2
       Top = 1
       Width = 631
       Align = alClient
+      Colors.DropMarkColor = clSkyBlue
+      Colors.DropTargetColor = clSkyBlue
+      Colors.DropTargetBorderColor = clSkyBlue
+      Colors.FocusedSelectionColor = clSkyBlue
+      Colors.FocusedSelectionBorderColor = clSkyBlue
       DefaultNodeHeight = 20
       DefaultText = 'Node'
+      Font.Quality = fqAntialiased
       Header.AutoSizeIndex = 0
       Header.Columns = <      
         item

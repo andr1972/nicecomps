@@ -7,7 +7,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus,
-  ComboEx, ExtCtrls, Buttons, fgl, VirtualTrees, Messages;
+  ComboEx, ExtCtrls, Buttons, fgl, VirtualTrees;
 
 type
   PTreeData = ^TTreeData;
@@ -72,6 +72,7 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
     procedure Splitter1CanOffset(Sender: TObject; var NewOffset: Integer;
       var Accept: Boolean);
     procedure VirtualStringTree1CompareNodes(Sender: TBaseVirtualTree; Node1,
@@ -288,6 +289,11 @@ end;
 procedure TForm2.SpeedButton4Click(Sender: TObject);
 begin
   Chdir('..');
+  Button3Click(nil);
+end;
+
+procedure TForm2.SpeedButton5Click(Sender: TObject);
+begin
   Button3Click(nil);
 end;
 

@@ -7,7 +7,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus,
-  ComboEx, ExtCtrls, fgl, VirtualTrees, Messages;
+  ComboEx, ExtCtrls, Buttons, fgl, VirtualTrees, Messages;
 
 type
   PTreeData = ^TTreeData;
@@ -32,27 +32,31 @@ type
     Button1: TButton;
     Button10: TButton;
     Button11: TButton;
-    Button12: TButton;
-    Button13: TButton;
-    Button14: TButton;
     Button2: TButton;
     Button3: TButton;
     Button4: TButton;
     Button5: TButton;
-    Button6: TButton;
-    Button7: TButton;
-    Button8: TButton;
-    Button9: TButton;
     ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
     ComboBoxEx1: TComboBoxEx;
     Edit1: TEdit;
     ImageList: TImageList;
     Label1: TLabel;
+    Label2: TLabel;
     OpenDialog1: TOpenDialog;
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
     SelectDirectoryDialog1: TSelectDirectoryDialog;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
+    SpeedButton6: TSpeedButton;
+    SpeedButton7: TSpeedButton;
+    SpeedButton8: TSpeedButton;
+    SpeedButton9: TSpeedButton;
     Splitter1: TSplitter;
     VirtualStringTree1: TVirtualStringTree;
     VirtualStringTree2: TVirtualStringTree;

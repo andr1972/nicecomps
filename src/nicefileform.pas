@@ -7,7 +7,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,fgl,
-  VirtualTrees;
+  VirtualTrees, Messages;
 
 type
   PTreeData = ^TTreeData;
@@ -49,6 +49,7 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure FormResize(Sender: TObject);
     procedure VirtualStringTree1CompareNodes(Sender: TBaseVirtualTree; Node1,
       Node2: PVirtualNode; Column: TColumnIndex; var Result: Integer);
     procedure VirtualStringTree1DblClick(Sender: TObject);
@@ -182,9 +183,23 @@ begin
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);
+var
+  p: TPoint;
 begin
   if Length(Edit1.Text)>0 then
   begin
+    p.x:=Edit1.Left;
+    p.y:=Edit1.Top+Edit1.Height;
+    p:=ClientToScreen(p);
+    if (p.y+Form3.Height+40>=Screen.Height) then
+    begin
+      p.x:=Edit1.Left;
+      p.y:=Edit1.Top-Form3.Height;
+      p:=ClientToScreen(p);
+    end;
+    Form3.Left := p.x;
+    Form3.Top := p.y;
+    Form3.Width := Edit1.Width;
     if not Form3.Visible then
     begin
       Form3.beingActivated:=true;
@@ -222,6 +237,11 @@ end;
 
 procedure TForm2.FormMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
+begin
+  if not Form3.beingActivated then Form3.Hide;
+end;
+
+procedure TForm2.FormResize(Sender: TObject);
 begin
   if not Form3.beingActivated then Form3.Hide;
 end;

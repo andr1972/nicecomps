@@ -40,7 +40,8 @@ type
     ComboBox2: TComboBox;
     ComboBoxEx1: TComboBoxEx;
     Edit1: TEdit;
-    ImageList: TImageList;
+    ImageList16: TImageList;
+    ImageList24: TImageList;
     Label1: TLabel;
     Label2: TLabel;
     OpenDialog1: TOpenDialog;

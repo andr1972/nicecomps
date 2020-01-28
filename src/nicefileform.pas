@@ -6,7 +6,7 @@ unit NiceFileForm;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,fgl,
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus,fgl,
   VirtualTrees, Messages;
 
 type
@@ -21,6 +21,7 @@ type
     IsDirectory: boolean;
     function Compare(other: PTreeData; n: integer): integer;
     class operator = (X,Y:TTreeData): boolean;
+    procedure Copy(dest: PTreeData);
   end;
 
   TFileItemList = specialize TFPGList<TTreeData>;
@@ -31,11 +32,13 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
+    Edit1: TEdit;
     ImageList: TImageList;
     Label1: TLabel;
     OpenDialog1: TOpenDialog;
     SelectDirectoryDialog1: TSelectDirectoryDialog;
     VirtualStringTree1: TVirtualStringTree;
+    VST: TVirtualStringTree;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -58,6 +61,7 @@ type
     procedure VirtualStringTree1GetText(Sender: TBaseVirtualTree;
       Node: PVirtualNode; Column: TColumnIndex; TextType: TVSTTextType;
       var CellText: String);
+    procedure VSTFreeNode(Sender: TBaseVirtualTree; Node: PVirtualNode);
   private
     ComboItems: TFileItemList;
   public
@@ -68,7 +72,7 @@ var
   Form2: TForm2;
 
 implementation
-uses LCLType, nicePopupFrom;
+uses LCLType;
 {$R *.lfm}
 
 function CompareInt(n1, n2: int64): integer;
@@ -172,20 +176,35 @@ begin
   begin
     XNode := VirtualStringTree1.AddChild(nil);
     XData := VirtualStringTree1.GetNodeData(XNode);
-    XData^:= CurrentItems[i];
+    CurrentItems[i].Copy(XData);
   end;
   VirtualStringTree1.SortTree(0, sdAscending);
+  for i:=0 to CurrentItems.Count-1 do
+  begin
+    XNode := VST.AddChild(nil);
+    XData := VST.GetNodeData(XNode);
+    CurrentItems[i].Copy(XData);
+  end;
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);
 var
   p: TPoint;
+  mi: TMenuItem;
 begin
-  Form3.Show;
+  VST.Visible := Length(Edit1.Text)>0;
+
+{  mi:=TMenuItem.Create(self);
+  mi.Caption:='abc';
+  PopupMenu1.Items.Add(mi);
+  p.x:=Edit1.Left;
+  p.y:=Edit1.Top+Edit1.Height;
+  p:=ClientToScreen(p);
+  PopupMenu1.PopUp(p.x, p.y);
+  Edit1.SetFocus;}
+  //Form3.Show;
 {  if Length(Edit1.Text)>0 then
   begin
-    p.x:=Edit1.Left;
-    p.y:=Edit1.Top+Edit1.Height;
     p:=ClientToScreen(p);
     if (p.y+Form3.Height+40>=Screen.Height) then
     begin
@@ -209,10 +228,10 @@ begin
 end;
 
 procedure TForm2.FormChangeBounds(Sender: TObject);
-var
-  p: TPoint;
+{var
+  p: TPoint;}
 begin
-  p.x:=Label1.Left+Label1.Width+10;
+{  p.x:=Label1.Left+Label1.Width+10;
   p.y:=Label1.Top+Label1.Height;
   p:=ClientToScreen(p);
   Form3.Left := p.x;
@@ -220,7 +239,7 @@ begin
   if not Form3.Visible then
   begin
     Form3.Show;
-  end;
+  end;}
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);
@@ -324,6 +343,11 @@ begin
   end;
 end;
 
+procedure TForm2.VSTFreeNode(Sender: TBaseVirtualTree; Node: PVirtualNode);
+begin
+
+end;
+
 procedure TForm2.Button1Click(Sender: TObject);
 begin
   OpenDialog1.Execute;
@@ -365,6 +389,14 @@ class operator TTreeData.=(X, Y: TTreeData): boolean;
 begin
   result:=(X.FileName=Y.FileName) and (X.FileSize=Y.FileSize) and (X.FileTime=Y.FileTime)
                                   and (X.IsDirectory=Y.IsDirectory);
+end;
+
+procedure TTreeData.Copy(dest: PTreeData);
+begin
+  dest^.FileName:=FileName;
+  dest^.FileSize:=FileSize;
+  dest^.FileTime:=FileTime;
+  dest^.IsDirectory:=IsDirectory;
 end;
 
 end.

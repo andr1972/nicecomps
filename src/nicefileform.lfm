@@ -1,13 +1,14 @@
 object Form2: TForm2
   Left = 137
   Height = 509
-  Top = 135
+  Top = 163
   Width = 982
   Caption = 'Form2'
   ClientHeight = 509
   ClientWidth = 982
   OnActivate = FormActivate
   OnChangeBounds = FormChangeBounds
+  OnCreate = FormCreate
   OnShow = FormShow
   LCLVersion = '2.0.6.0'
   object Button1: TButton
@@ -29,6 +30,7 @@ object Form2: TForm2
     TabOrder = 1
   end
   object VirtualStringTree1: TVirtualStringTree
+    Cursor = 63
     Left = 32
     Height = 272
     Top = 16
@@ -87,6 +89,33 @@ object Form2: TForm2
     Caption = 'Filename:'
     ParentColor = False
   end
+  object Edit1: TEdit
+    Left = 168
+    Height = 28
+    Top = 296
+    Width = 288
+    OnChange = Edit1Change
+    TabOrder = 4
+    Text = 'Edit1'
+  end
+  object VST: TVirtualStringTree
+    Left = 168
+    Height = 108
+    Top = 336
+    Width = 164
+    DefaultText = 'Node'
+    Header.AutoSizeIndex = 0
+    Header.Columns = <    
+      item
+        Position = 0
+        Width = 250
+      end>
+    Indent = 0
+    TabOrder = 5
+    OnFreeNode = VirtualStringTree1FreeNode
+    OnGetText = VirtualStringTree1GetText
+    OnGetNodeDataSize = VirtualStringTree1GetNodeDataSize
+  end
   object OpenDialog1: TOpenDialog
     left = 68
     top = 37
@@ -96,8 +125,8 @@ object Form2: TForm2
     top = 108
   end
   object ImageList: TImageList
-    left = 320
-    top = 413
+    left = 472
+    top = 384
     Bitmap = {
       4C69020000001000000010000000000000A20000009900000099000000990000
       009900000099000000A700000095000000010000000000000000000000000000

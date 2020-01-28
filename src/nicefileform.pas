@@ -51,7 +51,9 @@ type
     OpenDialog1: TOpenDialog;
     Panel1: TPanel;
     Panel2: TPanel;
+    Panel3: TPanel;
     SelectDirectoryDialog1: TSelectDirectoryDialog;
+    Splitter1: TSplitter;
     VirtualStringTree1: TVirtualStringTree;
     VirtualStringTree2: TVirtualStringTree;
     VST: TVirtualStringTree;

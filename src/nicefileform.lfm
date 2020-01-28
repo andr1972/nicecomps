@@ -11,49 +11,6 @@ object Form2: TForm2
   OnCreate = FormCreate
   OnShow = FormShow
   LCLVersion = '2.0.6.0'
-  object VirtualStringTree1: TVirtualStringTree
-    Cursor = 63
-    Left = 176
-    Height = 240
-    Top = 96
-    Width = 550
-    DefaultNodeHeight = 20
-    DefaultText = 'Node'
-    Header.AutoSizeIndex = 0
-    Header.Columns = <    
-      item
-        Position = 0
-        Text = 'Name'
-        Width = 275
-      end    
-      item
-        Position = 1
-        Text = 'Modification'
-        Width = 125
-      end    
-      item
-        Position = 2
-        Text = 'Type'
-      end    
-      item
-        Alignment = taRightJustify
-        Position = 3
-        Text = 'Size'
-        Width = 125
-      end>
-    Header.Options = [hoColumnResize, hoDrag, hoShowSortGlyphs, hoVisible, hoHeaderClickAutoSort]
-    Images = ImageList
-    ParentFont = False
-    TabOrder = 0
-    TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedImages]
-    TreeOptions.SelectionOptions = [toFullRowSelect]
-    OnCompareNodes = VirtualStringTree1CompareNodes
-    OnDblClick = VirtualStringTree1DblClick
-    OnFreeNode = VirtualStringTree1FreeNode
-    OnGetText = VirtualStringTree1GetText
-    OnGetImageIndex = VirtualStringTree1GetImageIndex
-    OnGetNodeDataSize = VirtualStringTree1GetNodeDataSize
-  end
   object Label1: TLabel
     Left = 102
     Height = 15
@@ -61,17 +18,6 @@ object Form2: TForm2
     Width = 51
     Caption = 'Filename:'
     ParentColor = False
-  end
-  object VirtualStringTree2: TVirtualStringTree
-    Left = 16
-    Height = 244
-    Top = 112
-    Width = 145
-    DefaultText = 'Node'
-    Header.AutoSizeIndex = 0
-    Header.Columns = <>
-    Header.MainColumn = -1
-    TabOrder = 1
   end
   object Panel1: TPanel
     Left = 0
@@ -82,7 +28,7 @@ object Form2: TForm2
     Caption = 'Panel1'
     ClientHeight = 74
     ClientWidth = 783
-    TabOrder = 2
+    TabOrder = 0
     object Edit1: TEdit
       Left = 88
       Height = 23
@@ -147,7 +93,7 @@ object Form2: TForm2
     Caption = 'Panel2'
     ClientHeight = 64
     ClientWidth = 783
-    TabOrder = 3
+    TabOrder = 1
     object Button4: TButton
       Left = 8
       Height = 25
@@ -253,6 +199,79 @@ object Form2: TForm2
       Width = 75
       Caption = 'Button14'
       TabOrder = 12
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Height = 287
+    Top = 64
+    Width = 783
+    Align = alClient
+    Caption = 'Panel3'
+    ClientHeight = 287
+    ClientWidth = 783
+    TabOrder = 2
+    object VirtualStringTree2: TVirtualStringTree
+      Left = 1
+      Height = 285
+      Top = 1
+      Width = 145
+      Align = alLeft
+      DefaultText = 'Node'
+      Header.AutoSizeIndex = 0
+      Header.Columns = <>
+      Header.MainColumn = -1
+      TabOrder = 0
+    end
+    object VirtualStringTree1: TVirtualStringTree
+      Cursor = 63
+      Left = 151
+      Height = 285
+      Top = 1
+      Width = 631
+      Align = alClient
+      DefaultNodeHeight = 20
+      DefaultText = 'Node'
+      Header.AutoSizeIndex = 0
+      Header.Columns = <      
+        item
+          Position = 0
+          Text = 'Name'
+          Width = 275
+        end      
+        item
+          Position = 1
+          Text = 'Modification'
+          Width = 125
+        end      
+        item
+          Position = 2
+          Text = 'Type'
+        end      
+        item
+          Alignment = taRightJustify
+          Position = 3
+          Text = 'Size'
+          Width = 125
+        end>
+      Header.Options = [hoColumnResize, hoDrag, hoShowSortGlyphs, hoVisible, hoHeaderClickAutoSort]
+      Images = ImageList
+      ParentFont = False
+      TabOrder = 1
+      TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedImages]
+      TreeOptions.SelectionOptions = [toFullRowSelect]
+      OnCompareNodes = VirtualStringTree1CompareNodes
+      OnDblClick = VirtualStringTree1DblClick
+      OnFreeNode = VirtualStringTree1FreeNode
+      OnGetText = VirtualStringTree1GetText
+      OnGetImageIndex = VirtualStringTree1GetImageIndex
+      OnGetNodeDataSize = VirtualStringTree1GetNodeDataSize
+    end
+    object Splitter1: TSplitter
+      Left = 146
+      Height = 285
+      Top = 1
+      Width = 5
     end
   end
   object OpenDialog1: TOpenDialog

@@ -1,13 +1,15 @@
 object Form2: TForm2
   Left = 151
-  Height = 533
-  Top = 120
+  Height = 1015
+  Top = 0
   Width = 982
   Caption = 'Form2'
-  ClientHeight = 533
+  ClientHeight = 1015
   ClientWidth = 982
   OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
   OnDestroy = FormDestroy
+  OnMouseDown = FormMouseDown
   LCLVersion = '2.0.6.0'
   object Button1: TButton
     Left = 32
@@ -91,6 +93,7 @@ object Form2: TForm2
     Height = 28
     Top = 296
     Width = 216
+    AutoDropDown = True
     ItemHeight = 0
     Items.Strings = (
       'q'
@@ -100,6 +103,17 @@ object Form2: TForm2
     )
     TabOrder = 4
     Text = 'ComboBox1'
+  end
+  object Edit1: TEdit
+    Left = 168
+    Height = 28
+    Top = 333
+    Width = 216
+    OnChange = Edit1Change
+    OnExit = Edit1Exit
+    OnKeyDown = Edit1KeyDown
+    TabOrder = 5
+    Text = 'Edit1'
   end
   object OpenDialog1: TOpenDialog
     left = 68

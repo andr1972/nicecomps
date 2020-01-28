@@ -32,6 +32,7 @@ type
     Button2: TButton;
     Button3: TButton;
     ComboBox1: TComboBox;
+    Edit1: TEdit;
     ImageList: TImageList;
     Label1: TLabel;
     OpenDialog1: TOpenDialog;
@@ -40,8 +41,14 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
+    procedure Edit1Exit(Sender: TObject);
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
+    procedure FormDeactivate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
     procedure VirtualStringTree1CompareNodes(Sender: TBaseVirtualTree; Node1,
       Node2: PVirtualNode; Column: TColumnIndex; var Result: Integer);
     procedure VirtualStringTree1DblClick(Sender: TObject);
@@ -65,7 +72,7 @@ var
   Form2: TForm2;
 
 implementation
-
+uses LCLType, nicePopupFrom;
 {$R *.lfm}
 
 function CompareInt(n1, n2: int64): integer;
@@ -174,16 +181,49 @@ begin
   VirtualStringTree1.SortTree(0, sdAscending);
 end;
 
+procedure TForm2.Edit1Change(Sender: TObject);
+begin
+  if Length(Edit1.Text)>0 then
+  begin
+    if not Form3.Visible then
+    begin
+      Form3.beingActivated:=true;
+      Form3.Show;
+    end;
+  end else Form3.Hide;
+end;
+
+procedure TForm2.Edit1Exit(Sender: TObject);
+begin
+  if not Form3.beingActivated then Form3.Hide;
+end;
+
+procedure TForm2.Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  if Key=VK_ESCAPE then if not Form3.beingActivated then Form3.Hide;
+end;
+
 procedure TForm2.FormCreate(Sender: TObject);
 begin
   CurrentItems:=TFileItemList.Create;
   ComboItems:=TFileItemList.Create;
 end;
 
+procedure TForm2.FormDeactivate(Sender: TObject);
+begin
+  if not Form3.beingActivated then Form3.Hide;
+end;
+
 procedure TForm2.FormDestroy(Sender: TObject);
 begin
   ComboItems.Free;
   CurrentItems.Free;
+end;
+
+procedure TForm2.FormMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  if not Form3.beingActivated then Form3.Hide;
 end;
 
 procedure TForm2.VirtualStringTree1CompareNodes(Sender: TBaseVirtualTree;

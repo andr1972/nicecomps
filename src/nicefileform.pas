@@ -31,8 +31,6 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
-    ComboBox1: TComboBox;
-    Edit1: TEdit;
     ImageList: TImageList;
     Label1: TLabel;
     OpenDialog1: TOpenDialog;
@@ -42,14 +40,11 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
-    procedure Edit1Exit(Sender: TObject);
-    procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormActivate(Sender: TObject);
+    procedure FormChangeBounds(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure FormDeactivate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
-    procedure FormResize(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure VirtualStringTree1CompareNodes(Sender: TBaseVirtualTree; Node1,
       Node2: PVirtualNode; Column: TColumnIndex; var Result: Integer);
     procedure VirtualStringTree1DblClick(Sender: TObject);
@@ -186,7 +181,8 @@ procedure TForm2.Edit1Change(Sender: TObject);
 var
   p: TPoint;
 begin
-  if Length(Edit1.Text)>0 then
+  Form3.Show;
+{  if Length(Edit1.Text)>0 then
   begin
     p.x:=Edit1.Left;
     p.y:=Edit1.Top+Edit1.Height;
@@ -202,20 +198,29 @@ begin
     Form3.Width := Edit1.Width;
     if not Form3.Visible then
     begin
-      Form3.beingActivated:=true;
       Form3.Show;
     end;
-  end else Form3.Hide;
+  end else Form3.Hide;}
 end;
 
-procedure TForm2.Edit1Exit(Sender: TObject);
+procedure TForm2.FormActivate(Sender: TObject);
 begin
-  if not Form3.beingActivated then Form3.Hide;
+  FormChangeBounds(Sender);
 end;
 
-procedure TForm2.Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TForm2.FormChangeBounds(Sender: TObject);
+var
+  p: TPoint;
 begin
-  if Key=VK_ESCAPE then if not Form3.beingActivated then Form3.Hide;
+  p.x:=Label1.Left+Label1.Width+10;
+  p.y:=Label1.Top+Label1.Height;
+  p:=ClientToScreen(p);
+  Form3.Left := p.x;
+  Form3.Top := p.y-Form3.Edit1.Height;
+  if not Form3.Visible then
+  begin
+    Form3.Show;
+  end;
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);
@@ -224,26 +229,15 @@ begin
   ComboItems:=TFileItemList.Create;
 end;
 
-procedure TForm2.FormDeactivate(Sender: TObject);
-begin
-  if not Form3.beingActivated then Form3.Hide;
-end;
-
 procedure TForm2.FormDestroy(Sender: TObject);
 begin
   ComboItems.Free;
   CurrentItems.Free;
 end;
 
-procedure TForm2.FormMouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
+procedure TForm2.FormShow(Sender: TObject);
 begin
-  if not Form3.beingActivated then Form3.Hide;
-end;
 
-procedure TForm2.FormResize(Sender: TObject);
-begin
-  if not Form3.beingActivated then Form3.Hide;
 end;
 
 procedure TForm2.VirtualStringTree1CompareNodes(Sender: TBaseVirtualTree;

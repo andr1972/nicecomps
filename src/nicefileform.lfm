@@ -6,11 +6,9 @@ object Form2: TForm2
   Caption = 'Form2'
   ClientHeight = 509
   ClientWidth = 982
-  OnCreate = FormCreate
-  OnDeactivate = FormDeactivate
-  OnDestroy = FormDestroy
-  OnMouseDown = FormMouseDown
-  OnResize = FormResize
+  OnActivate = FormActivate
+  OnChangeBounds = FormChangeBounds
+  OnShow = FormShow
   LCLVersion = '2.0.6.0'
   object Button1: TButton
     Left = 32
@@ -88,33 +86,6 @@ object Form2: TForm2
     Width = 57
     Caption = 'Filename:'
     ParentColor = False
-  end
-  object ComboBox1: TComboBox
-    Left = 168
-    Height = 28
-    Top = 296
-    Width = 216
-    AutoDropDown = True
-    ItemHeight = 0
-    Items.Strings = (
-      'q'
-      'q'
-      'qqqq'
-      'qq'
-    )
-    TabOrder = 4
-    Text = 'ComboBox1'
-  end
-  object Edit1: TEdit
-    Left = 168
-    Height = 28
-    Top = 333
-    Width = 216
-    OnChange = Edit1Change
-    OnExit = Edit1Exit
-    OnKeyDown = Edit1KeyDown
-    TabOrder = 5
-    Text = 'Edit1'
   end
   object OpenDialog1: TOpenDialog
     left = 68

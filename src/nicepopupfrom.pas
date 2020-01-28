@@ -13,15 +13,12 @@ type
   { TForm3 }
 
   TForm3 = class(TForm)
-    Timer1: TTimer;
+    Edit1: TEdit;
     VirtualStringTree1: TVirtualStringTree;
     procedure FormActivate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure Timer1Timer(Sender: TObject);
   private
-
   public
-    beingActivated: boolean;
   end;
 
 var
@@ -40,7 +37,7 @@ var
   i: integer;
 begin
   VirtualStringTree1.Clear;
-  for i:=0 to Form2.CurrentItems.Count-1 do
+  for i:=0 to 10 do ;//Form2.CurrentItems.Count-1 do
   begin
     XNode := VirtualStringTree1.AddChild(nil);
     XData := VirtualStringTree1.GetNodeData(XNode);
@@ -50,14 +47,7 @@ end;
 
 procedure TForm3.FormActivate(Sender: TObject);
 begin
-  Timer1.Enabled:=true;
-end;
 
-procedure TForm3.Timer1Timer(Sender: TObject);
-begin
-  Timer1.Enabled:=false;
-  Form2.Edit1.SetFocus;
-  beingActivated:=false;
 end;
 
 end.

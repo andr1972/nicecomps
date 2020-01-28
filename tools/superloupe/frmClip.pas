@@ -3,7 +3,7 @@ unit frmClip;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, ExtDlgs, ImgList, ExtCtrls;
 
 type
@@ -49,7 +49,7 @@ var
 implementation
 
 uses
-  frmLoupe, Types, Clipbrd;
+  frmLoupe, Types, Clipbrd, LCLIntf, LCLType;
 
 {$R *.lfm}
 

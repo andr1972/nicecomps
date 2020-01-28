@@ -3,7 +3,7 @@ unit frmLoupe;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   StdCtrls, ExtCtrls, ComCtrls, Spin, Buttons,
   CheckLst, Menus, ExtDlgs, frmClip, Dialogs;
 
@@ -118,9 +118,17 @@ var
 implementation
 
 uses
-  Math, Types, ColorDesc, ShellAPI, Clipbrd, dlgAbout, IniFiles;
+  Math, Types, ColorDesc, Clipbrd, dlgAbout, IniFiles, LCLIntf, LCLType;
 
 {$R *.lfm}
+{$R Cursors.res}
+type
+  TRGBQUAD = record
+    rgbBlue : BYTE;
+    rgbGreen : BYTE;
+    rgbRed : BYTE;
+    rgbReserved : BYTE;
+  end;
 
 const
   crZoom     = TCursor(1);
@@ -456,12 +464,12 @@ end;
 
 procedure TLoupeForm.btnCalcClick(Sender: TObject);
 begin
-  ShellExecuteA(0,PAnsiChar('open'),'calc','','',SW_SHOW);
+  //ShellExecuteA(0,PAnsiChar('open'),'calc','','',SW_SHOW);
 end;
 
 procedure TLoupeForm.btnNotepaClick(Sender: TObject);
 begin
-  ShellExecuteA(0,PAnsiChar('open'),'notepad','','',SW_SHOW);
+  //ShellExecuteA(0,PAnsiChar('open'),'notepad','','',SW_SHOW);
 end;
 
 

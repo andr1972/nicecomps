@@ -5,7 +5,7 @@ object LoupeForm: TLoupeForm
   Width = 477
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Super Loupe'
-  ClientHeight = 373
+  ClientHeight = 369
   ClientWidth = 477
   Color = clBtnFace
   Font.Color = clWindowText
@@ -22,9 +22,9 @@ object LoupeForm: TLoupeForm
   LCLVersion = '2.0.6.0'
   object PaintBox: TPaintBox
     Left = 0
-    Height = 334
+    Height = 338
     Top = 0
-    Width = 349
+    Width = 352
     Align = alClient
     Color = clBtnFace
     ParentColor = False
@@ -35,8 +35,8 @@ object LoupeForm: TLoupeForm
   end
   object StatusBar: TStatusBar
     Left = 0
-    Height = 23
-    Top = 350
+    Height = 18
+    Top = 351
     Width = 477
     Panels = <    
       item
@@ -55,49 +55,49 @@ object LoupeForm: TLoupeForm
     SimplePanel = False
   end
   object Panel: TPanel
-    Left = 349
-    Height = 334
+    Left = 352
+    Height = 338
     Top = 0
     Width = 112
     Align = alRight
-    ClientHeight = 334
+    ClientHeight = 338
     ClientWidth = 112
     TabOrder = 1
     object cbGrid: TCheckBox
-      Left = 20
-      Height = 19
+      Left = 4
+      Height = 23
       Top = 16
-      Width = 69
+      Width = 84
       Anchors = [akTop, akRight]
       Caption = 'Show Grid'
       OnClick = cbGridClick
       TabOrder = 0
     end
     object cbTimer: TCheckBox
-      Left = 20
-      Height = 19
+      Left = 4
+      Height = 23
       Top = 32
-      Width = 46
+      Width = 59
       Anchors = [akTop, akRight]
       Caption = 'Timer'
       OnClick = cbTimerClick
       TabOrder = 4
     end
     object cbMouseFrame: TCheckBox
-      Left = 20
-      Height = 19
+      Left = 4
+      Height = 23
       Top = 64
-      Width = 84
+      Width = 101
       Anchors = [akTop, akRight]
       Caption = 'Mouse Frame'
       OnClick = cbMouseFrameClick
       TabOrder = 5
     end
     object cbDist: TCheckBox
-      Left = 20
-      Height = 19
+      Left = 4
+      Height = 23
       Top = 80
-      Width = 82
+      Width = 99
       Anchors = [akTop, akRight]
       Caption = 'Measure Dist'
       OnClick = cbMouseFrameClick
@@ -105,7 +105,7 @@ object LoupeForm: TLoupeForm
     end
     object SpinEdit: TSpinEdit
       Left = 9
-      Height = 21
+      Height = 26
       Top = 140
       Width = 81
       Anchors = [akTop, akRight]
@@ -134,20 +134,20 @@ object LoupeForm: TLoupeForm
       TabOrder = 3
     end
     object cbFollowMouse: TCheckBox
-      Left = 20
-      Height = 19
+      Left = 4
+      Height = 23
       Top = 48
-      Width = 84
+      Width = 103
       Anchors = [akTop, akRight]
       Caption = 'Follow mouse'
       OnClick = cbMouseFrameClick
       TabOrder = 8
     end
     object cbAlwaysOnTop: TCheckBox
-      Left = 20
-      Height = 19
+      Left = 4
+      Height = 23
       Top = 96
-      Width = 86
+      Width = 106
       Anchors = [akTop, akRight]
       Caption = 'Always on top'
       OnClick = cbAlwaysOnTopClick
@@ -155,7 +155,7 @@ object LoupeForm: TLoupeForm
     end
     object ScaleScroll: TScrollBar
       Left = 10
-      Height = 17
+      Height = 13
       Top = 168
       Width = 97
       LargeChange = 2
@@ -169,8 +169,8 @@ object LoupeForm: TLoupeForm
   end
   object HScroll: TScrollBar
     Left = 0
-    Height = 16
-    Top = 334
+    Height = 13
+    Top = 338
     Width = 477
     Align = alBottom
     LargeChange = 10
@@ -179,10 +179,10 @@ object LoupeForm: TLoupeForm
     OnChange = HScrollChange
   end
   object VScroll: TScrollBar
-    Left = 461
-    Height = 334
+    Left = 464
+    Height = 338
     Top = 0
-    Width = 16
+    Width = 13
     Align = alRight
     Kind = sbVertical
     LargeChange = 10

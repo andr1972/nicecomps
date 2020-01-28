@@ -14,15 +14,15 @@ object ClipForm: TClipForm
   LCLVersion = '2.0.6.0'
   object Label1: TLabel
     Left = 8
-    Height = 13
+    Height = 14
     Top = 40
-    Width = 18
+    Width = 21
     Caption = 'Left'
     ParentColor = False
   end
   object Label2: TLabel
     Left = 8
-    Height = 13
+    Height = 14
     Top = 72
     Width = 19
     Caption = 'Top'
@@ -30,60 +30,60 @@ object ClipForm: TClipForm
   end
   object Label3: TLabel
     Left = 111
-    Height = 13
+    Height = 14
     Top = 40
-    Width = 25
+    Width = 29
     Caption = 'Right'
     ParentColor = False
   end
   object Label4: TLabel
     Left = 111
-    Height = 13
+    Height = 14
     Top = 71
-    Width = 33
+    Width = 41
     Caption = 'Bottom'
     ParentColor = False
   end
   object Label5: TLabel
     Left = 40
-    Height = 13
+    Height = 14
     Top = 8
-    Width = 53
+    Width = 66
     Caption = '(left button)'
     ParentColor = False
   end
   object Label6: TLabel
     Left = 148
-    Height = 13
+    Height = 14
     Top = 9
-    Width = 59
+    Width = 74
     Caption = '(right button)'
     ParentColor = False
   end
   object edLeft: TEdit
     Left = 32
-    Height = 21
+    Height = 26
     Top = 32
     Width = 65
     TabOrder = 0
   end
   object edTop: TEdit
     Left = 32
-    Height = 21
+    Height = 26
     Top = 64
     Width = 65
     TabOrder = 1
   end
   object edRight: TEdit
     Left = 149
-    Height = 21
+    Height = 26
     Top = 32
     Width = 65
     TabOrder = 2
   end
   object edBottom: TEdit
     Left = 149
-    Height = 21
+    Height = 26
     Top = 64
     Width = 65
     TabOrder = 3
@@ -151,8 +151,8 @@ object ClipForm: TClipForm
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 71
-    ClientWidth = 54
+    ClientHeight = 74
+    ClientWidth = 56
     ItemIndex = 3
     Items.Strings = (
       '1'

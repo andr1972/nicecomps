@@ -17,6 +17,7 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
+    ComboBox1: TComboBox;
     ComboBoxEx1: TComboBoxEx;
     ImageList: TImageList;
     Label1: TLabel;

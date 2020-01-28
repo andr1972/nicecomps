@@ -2,7 +2,8 @@ unit dlgAbout;
 
 interface
 
-uses Windows, SysUtils, Classes, Graphics, Forms, Controls, StdCtrls,
+uses
+  SysUtils, Classes, Graphics, Forms, Controls, StdCtrls,
   Buttons, ExtCtrls;
 
 type
@@ -23,6 +24,8 @@ var
   AboutBox: TAboutBox;
 
 implementation
+uses
+  LCLType;
 
 {$R *.lfm}
 

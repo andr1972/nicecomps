@@ -6,10 +6,24 @@ unit NiceFileForm;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComboEx,
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,fgl,
   VirtualTrees;
 
 type
+  PTreeData = ^TTreeData;
+
+  { TTreeData }
+
+  TTreeData = record
+    FileName: string;
+    FileTime: longint;
+    FileSize: int64;
+    IsDirectory: boolean;
+    function Compare(other: PTreeData; n: integer): integer;
+    class operator = (X,Y:TTreeData): boolean;
+  end;
+
+  TFileItemList = specialize TFPGList<TTreeData>;
 
   { TForm2 }
 
@@ -18,7 +32,6 @@ type
     Button2: TButton;
     Button3: TButton;
     ComboBox1: TComboBox;
-    ComboBoxEx1: TComboBoxEx;
     ImageList: TImageList;
     Label1: TLabel;
     OpenDialog1: TOpenDialog;
@@ -27,6 +40,8 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
     procedure VirtualStringTree1CompareNodes(Sender: TBaseVirtualTree; Node1,
       Node2: PVirtualNode; Column: TColumnIndex; var Result: Integer);
     procedure VirtualStringTree1DblClick(Sender: TObject);
@@ -41,9 +56,9 @@ type
       Node: PVirtualNode; Column: TColumnIndex; TextType: TVSTTextType;
       var CellText: String);
   private
-
+    CurrentItems: TFileItemList;
+    ComboItems: TFileItemList;
   public
-
   end;
 
 var
@@ -52,17 +67,6 @@ var
 implementation
 
 {$R *.lfm}
-
-type
-  PTreeData = ^TTreeData;
-
-  TTreeData = record
-    FileName: string;
-    FileTime: longint;
-    FileSize: int64;
-    IsDirectory: boolean;
-    function Compare(other: PTreeData; n: integer): integer;
-  end;
 
 function CompareInt(n1, n2: int64): integer;
 begin
@@ -131,29 +135,55 @@ end;
 
 { TForm2 }
 
-procedure TForm2.Button3Click(Sender: TObject);
+procedure FillItems(path: string; items: TFileItemList);
 var
-  XNode, XChildNode: PVirtualNode;
-  Data: PTreeData;
+  Data: TTreeData;
   sr: TSearchRec;
 begin
-  VirtualStringTree1.Clear;
+  items.Clear;
   if FindFirst('*', faAnyFile, sr) = 0 then
     repeat
       if (sr.Name = '.') or (sr.Name = '..') then
         continue;
-      XNode := VirtualStringTree1.AddChild(nil);
-      Data := VirtualStringTree1.GetNodeData(XNode);
-      Data^.FileName := sr.Name;
-      Data^.FileTime := sr.Time;
-      Data^.IsDirectory := (sr.Attr and faDirectory) = faDirectory;
-      if Data^.IsDirectory then
-        Data^.FileSize := 0
+      Data.FileName := sr.Name;
+      Data.FileTime := sr.Time;
+      Data.IsDirectory := (sr.Attr and faDirectory) = faDirectory;
+      if Data.IsDirectory then
+        Data.FileSize := 0
       else
-        Data^.FileSize := sr.Size;
+        Data.FileSize := sr.Size;
+      items.Add(Data);
     until FindNext(sr) <> 0;
   FindClose(sr);
+end;
+
+procedure TForm2.Button3Click(Sender: TObject);
+var
+  XNode: PVirtualNode;
+  XData: PTreeData;
+  i: integer;
+begin
+  VirtualStringTree1.Clear;
+  FillItems('*',CurrentItems);
+  for i:=0 to CurrentItems.Count-1 do
+  begin
+    XNode := VirtualStringTree1.AddChild(nil);
+    XData := VirtualStringTree1.GetNodeData(XNode);
+    XData^:= CurrentItems[i];
+  end;
   VirtualStringTree1.SortTree(0, sdAscending);
+end;
+
+procedure TForm2.FormCreate(Sender: TObject);
+begin
+  CurrentItems:=TFileItemList.Create;
+  ComboItems:=TFileItemList.Create;
+end;
+
+procedure TForm2.FormDestroy(Sender: TObject);
+begin
+  ComboItems.Free;
+  CurrentItems.Free;
 end;
 
 procedure TForm2.VirtualStringTree1CompareNodes(Sender: TBaseVirtualTree;
@@ -275,6 +305,12 @@ begin
   end;
   if Result = 0 then
     Result := CompareName(FileName, other^.FileName);
+end;
+
+class operator TTreeData.=(X, Y: TTreeData): boolean;
+begin
+  result:=(X.FileName=Y.FileName) and (X.FileSize=Y.FileSize) and (X.FileTime=Y.FileTime)
+                                  and (X.IsDirectory=Y.IsDirectory);
 end;
 
 end.

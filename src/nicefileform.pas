@@ -71,6 +71,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
     procedure Splitter1CanOffset(Sender: TObject; var NewOffset: Integer;
       var Accept: Boolean);
     procedure VirtualStringTree1CompareNodes(Sender: TBaseVirtualTree; Node1,
@@ -284,6 +285,12 @@ begin
 
 end;
 
+procedure TForm2.SpeedButton4Click(Sender: TObject);
+begin
+  Chdir('..');
+  Button3Click(nil);
+end;
+
 procedure TForm2.Splitter1CanOffset(Sender: TObject; var NewOffset: Integer;
   var Accept: Boolean);
 begin
@@ -305,7 +312,8 @@ var
   Data: PTreeData;
 begin
   Data := (Sender as TBaseVirtualTree).GetNodeData(VirtualStringTree1.FocusedNode);
-  if Data^.IsDirectory then
+  if Data=nil then ShowMessage('FocusedNode=nil')
+  else if Data^.IsDirectory then
     begin
       Chdir(Data^.FileName);
       Button3Click(nil);

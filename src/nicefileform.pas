@@ -64,9 +64,9 @@ type
       Node: PVirtualNode; Column: TColumnIndex; TextType: TVSTTextType;
       var CellText: String);
   private
-    CurrentItems: TFileItemList;
     ComboItems: TFileItemList;
   public
+    CurrentItems: TFileItemList;
   end;
 
 var

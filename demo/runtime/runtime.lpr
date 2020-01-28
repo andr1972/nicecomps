@@ -7,7 +7,8 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, mainform, NicePages, nicedialogs, NiceFileForm, nicePopupFrom
+  Forms, lazcontrols, mainform, NicePages, nicedialogs, NiceFileForm,
+  nicePopupFrom
   { you can add units after this };
 
 {$R *.res}

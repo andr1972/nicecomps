@@ -1,29 +1,27 @@
 object Form3: TForm3
   Left = 336
-  Height = 184
+  Height = 176
   Top = 191
-  Width = 185
+  Width = 164
   BorderStyle = bsNone
   Caption = 'Form3'
-  ClientHeight = 184
-  ClientWidth = 185
+  ClientHeight = 176
+  ClientWidth = 164
   FormStyle = fsStayOnTop
   OnActivate = FormActivate
   OnShow = FormShow
   LCLVersion = '2.0.6.0'
-  object ListBox1: TListBox
+  object VirtualStringTree1: TVirtualStringTree
     Left = 0
-    Height = 184
+    Height = 176
     Top = 0
-    Width = 185
+    Width = 164
     Align = alClient
-    Items.Strings = (
-      'first'
-      'second'
-      'third'
-    )
-    ItemHeight = 22
-    ScrollWidth = 183
+    DefaultText = 'Node'
+    Header.AutoSizeIndex = 0
+    Header.Columns = <>
+    Header.MainColumn = -1
+    Indent = 0
     TabOrder = 0
   end
   object Timer1: TTimer

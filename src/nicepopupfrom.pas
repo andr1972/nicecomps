@@ -5,15 +5,16 @@ unit nicePopupFrom;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  ComCtrls, VirtualTrees;
 
 type
 
   { TForm3 }
 
   TForm3 = class(TForm)
-    ListBox1: TListBox;
     Timer1: TTimer;
+    VirtualStringTree1: TVirtualStringTree;
     procedure FormActivate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -33,8 +34,18 @@ uses NiceFileForm;
 { TForm3 }
 
 procedure TForm3.FormShow(Sender: TObject);
+var
+  XNode: PVirtualNode;
+  XData: PTreeData;
+  i: integer;
 begin
-
+  VirtualStringTree1.Clear;
+  for i:=0 to Form2.CurrentItems.Count-1 do
+  begin
+    XNode := VirtualStringTree1.AddChild(nil);
+    XData := VirtualStringTree1.GetNodeData(XNode);
+    //XData^:= Form2.CurrentItems[0];
+  end;
 end;
 
 procedure TForm3.FormActivate(Sender: TObject);

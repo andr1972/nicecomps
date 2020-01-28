@@ -6,8 +6,8 @@ unit NiceFileForm;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus,fgl,
-  VirtualTrees, Messages;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus,
+  ComboEx, ExtCtrls, fgl, VirtualTrees, Messages;
 
 type
   PTreeData = ^TTreeData;
@@ -30,14 +30,30 @@ type
 
   TForm2 = class(TForm)
     Button1: TButton;
+    Button10: TButton;
+    Button11: TButton;
+    Button12: TButton;
+    Button13: TButton;
+    Button14: TButton;
     Button2: TButton;
     Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
+    Button8: TButton;
+    Button9: TButton;
+    ComboBox1: TComboBox;
+    ComboBoxEx1: TComboBoxEx;
     Edit1: TEdit;
     ImageList: TImageList;
     Label1: TLabel;
     OpenDialog1: TOpenDialog;
+    Panel1: TPanel;
+    Panel2: TPanel;
     SelectDirectoryDialog1: TSelectDirectoryDialog;
     VirtualStringTree1: TVirtualStringTree;
+    VirtualStringTree2: TVirtualStringTree;
     VST: TVirtualStringTree;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -48,6 +64,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Splitter1CanOffset(Sender: TObject; var NewOffset: Integer;
+      var Accept: Boolean);
     procedure VirtualStringTree1CompareNodes(Sender: TBaseVirtualTree; Node1,
       Node2: PVirtualNode; Column: TColumnIndex; var Result: Integer);
     procedure VirtualStringTree1DblClick(Sender: TObject);
@@ -259,6 +277,12 @@ begin
 
 end;
 
+procedure TForm2.Splitter1CanOffset(Sender: TObject; var NewOffset: Integer;
+  var Accept: Boolean);
+begin
+
+end;
+
 procedure TForm2.VirtualStringTree1CompareNodes(Sender: TBaseVirtualTree;
   Node1, Node2: PVirtualNode; Column: TColumnIndex; var Result: Integer);
 var
@@ -350,6 +374,7 @@ end;
 
 procedure TForm2.Button1Click(Sender: TObject);
 begin
+  OpenDialog1.Filter:='(*.lpi;*.lpr)|*.lpi;*.lpr|(*.exe)|*.exe';
   OpenDialog1.Execute;
 end;
 

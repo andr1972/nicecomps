@@ -3,7 +3,7 @@ object Form1: TForm1
   Height = 548
   Top = 179
   Width = 754
-  Caption = 'Form1'
+  Caption = 'Open existing file'
   KeyPreview = True
   Menu = MainMenu1
   OnCreate = FormCreate

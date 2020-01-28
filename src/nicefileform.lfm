@@ -1,40 +1,22 @@
 object Form2: TForm2
-  Left = 137
-  Height = 509
-  Top = 163
-  Width = 982
-  Caption = 'Form2'
-  ClientHeight = 509
-  ClientWidth = 982
+  Left = 275
+  Height = 425
+  Top = 177
+  Width = 783
+  Caption = 'Open existing file'
+  ClientHeight = 425
+  ClientWidth = 783
   OnActivate = FormActivate
   OnChangeBounds = FormChangeBounds
   OnCreate = FormCreate
   OnShow = FormShow
   LCLVersion = '2.0.6.0'
-  object Button1: TButton
-    Left = 32
-    Height = 25
-    Top = 464
-    Width = 75
-    Caption = 'Button1'
-    OnClick = Button1Click
-    TabOrder = 0
-  end
-  object Button2: TButton
-    Left = 24
-    Height = 25
-    Top = 424
-    Width = 75
-    Caption = 'Button2'
-    OnClick = Button2Click
-    TabOrder = 1
-  end
   object VirtualStringTree1: TVirtualStringTree
     Cursor = 63
-    Left = 32
-    Height = 272
-    Top = 16
-    Width = 584
+    Left = 176
+    Height = 240
+    Top = 96
+    Width = 550
     DefaultNodeHeight = 20
     DefaultText = 'Node'
     Header.AutoSizeIndex = 0
@@ -62,7 +44,7 @@ object Form2: TForm2
     Header.Options = [hoColumnResize, hoDrag, hoShowSortGlyphs, hoVisible, hoHeaderClickAutoSort]
     Images = ImageList
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 0
     TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedImages]
     TreeOptions.SelectionOptions = [toFullRowSelect]
     OnCompareNodes = VirtualStringTree1CompareNodes
@@ -72,61 +54,218 @@ object Form2: TForm2
     OnGetImageIndex = VirtualStringTree1GetImageIndex
     OnGetNodeDataSize = VirtualStringTree1GetNodeDataSize
   end
-  object Button3: TButton
-    Left = 480
-    Height = 25
-    Top = 336
-    Width = 75
-    Caption = 'Button3'
-    OnClick = Button3Click
-    TabOrder = 3
-  end
   object Label1: TLabel
     Left = 102
-    Height = 16
+    Height = 15
     Top = 301
-    Width = 57
+    Width = 51
     Caption = 'Filename:'
     ParentColor = False
   end
-  object Edit1: TEdit
-    Left = 168
-    Height = 28
-    Top = 296
-    Width = 288
-    OnChange = Edit1Change
-    TabOrder = 4
-    Text = 'Edit1'
-  end
-  object VST: TVirtualStringTree
-    Left = 168
-    Height = 108
-    Top = 336
-    Width = 164
+  object VirtualStringTree2: TVirtualStringTree
+    Left = 16
+    Height = 244
+    Top = 112
+    Width = 145
     DefaultText = 'Node'
     Header.AutoSizeIndex = 0
-    Header.Columns = <    
-      item
-        Position = 0
-        Width = 250
-      end>
-    Indent = 0
-    TabOrder = 5
-    OnFreeNode = VirtualStringTree1FreeNode
-    OnGetText = VirtualStringTree1GetText
-    OnGetNodeDataSize = VirtualStringTree1GetNodeDataSize
+    Header.Columns = <>
+    Header.MainColumn = -1
+    TabOrder = 1
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 74
+    Top = 351
+    Width = 783
+    Align = alBottom
+    Caption = 'Panel1'
+    ClientHeight = 74
+    ClientWidth = 783
+    TabOrder = 2
+    object Edit1: TEdit
+      Left = 88
+      Height = 23
+      Top = 0
+      Width = 288
+      OnChange = Edit1Change
+      TabOrder = 0
+      Text = 'Edit1'
+    end
+    object VST: TVirtualStringTree
+      Left = 176
+      Height = 108
+      Top = 0
+      Width = 164
+      DefaultText = 'Node'
+      Header.AutoSizeIndex = 0
+      Header.Columns = <      
+        item
+          Position = 0
+          Width = 250
+        end>
+      Indent = 0
+      TabOrder = 1
+      OnFreeNode = VirtualStringTree1FreeNode
+      OnGetText = VirtualStringTree1GetText
+      OnGetNodeDataSize = VirtualStringTree1GetNodeDataSize
+    end
+    object Button2: TButton
+      Left = 8
+      Height = 25
+      Top = 49
+      Width = 75
+      Caption = 'Button2'
+      OnClick = Button2Click
+      TabOrder = 2
+    end
+    object Button3: TButton
+      Left = 16
+      Height = 25
+      Top = 24
+      Width = 75
+      Caption = 'Button3'
+      OnClick = Button3Click
+      TabOrder = 3
+    end
+    object Button1: TButton
+      Left = 48
+      Height = 25
+      Top = 24
+      Width = 75
+      Caption = 'Button1'
+      OnClick = Button1Click
+      TabOrder = 4
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 64
+    Top = 0
+    Width = 783
+    Align = alTop
+    Caption = 'Panel2'
+    ClientHeight = 64
+    ClientWidth = 783
+    TabOrder = 3
+    object Button4: TButton
+      Left = 8
+      Height = 25
+      Top = 7
+      Width = 32
+      Caption = '<-'
+      TabOrder = 0
+    end
+    object Button5: TButton
+      Left = 43
+      Height = 25
+      Top = 7
+      Width = 32
+      Caption = '->'
+      TabOrder = 1
+    end
+    object Button6: TButton
+      Left = 80
+      Height = 25
+      Top = 7
+      Width = 32
+      Caption = '|'
+      TabOrder = 2
+    end
+    object Button7: TButton
+      Left = 112
+      Height = 25
+      Top = 7
+      Width = 32
+      Caption = '^'
+      TabOrder = 3
+    end
+    object ComboBoxEx1: TComboBoxEx
+      Left = 144
+      Height = 22
+      Top = 8
+      Width = 345
+      ItemHeight = 16
+      ItemsEx = <>
+      TabOrder = 4
+    end
+    object Button8: TButton
+      Left = 496
+      Height = 25
+      Top = 7
+      Width = 35
+      Caption = 'Button8'
+      TabOrder = 5
+    end
+    object Button9: TButton
+      Left = 536
+      Height = 25
+      Top = 8
+      Width = 35
+      Caption = 'Button9'
+      TabOrder = 6
+    end
+    object ComboBox1: TComboBox
+      Left = 584
+      Height = 23
+      Top = 10
+      Width = 100
+      ItemHeight = 15
+      TabOrder = 7
+      Text = 'ComboBox1'
+    end
+    object Button10: TButton
+      Left = 11
+      Height = 25
+      Top = 39
+      Width = 64
+      Caption = 'Button10'
+      TabOrder = 8
+    end
+    object Button11: TButton
+      Left = 88
+      Height = 25
+      Top = 39
+      Width = 75
+      Caption = 'Button11'
+      TabOrder = 9
+    end
+    object Button12: TButton
+      Left = 480
+      Height = 25
+      Top = 39
+      Width = 75
+      Caption = 'Button12'
+      TabOrder = 10
+    end
+    object Button13: TButton
+      Left = 576
+      Height = 25
+      Top = 40
+      Width = 75
+      Caption = 'Button13'
+      TabOrder = 11
+    end
+    object Button14: TButton
+      Left = 655
+      Height = 25
+      Top = 39
+      Width = 75
+      Caption = 'Button14'
+      TabOrder = 12
+    end
   end
   object OpenDialog1: TOpenDialog
-    left = 68
-    top = 37
+    left = 48
+    top = 168
   end
   object SelectDirectoryDialog1: TSelectDirectoryDialog
     left = 60
     top = 108
   end
   object ImageList: TImageList
-    left = 472
-    top = 384
+    left = 568
+    top = 296
     Bitmap = {
       4C69020000001000000010000000000000A20000009900000099000000990000
       009900000099000000A700000095000000010000000000000000000000000000

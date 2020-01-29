@@ -1,7 +1,7 @@
 object Form2: TForm2
-  Left = 323
+  Left = 322
   Height = 425
-  Top = 197
+  Top = 199
   Width = 783
   Caption = 'Open existing file'
   ClientHeight = 425
@@ -251,6 +251,7 @@ object Form2: TForm2
       Caption = 'New folder'
       Color = clDefault
       Flat = True
+      OnClick = SpeedButton11Click
     end
   end
   object Panel3: TPanel
@@ -325,6 +326,8 @@ object Form2: TForm2
       TreeOptions.SelectionOptions = [toFullRowSelect]
       OnCompareNodes = VirtualStringTree1CompareNodes
       OnDblClick = VirtualStringTree1DblClick
+      OnEdited = VirtualStringTree1Edited
+      OnEditing = VirtualStringTree1Editing
       OnFreeNode = VirtualStringTree1FreeNode
       OnGetText = VirtualStringTree1GetText
       OnGetImageIndex = VirtualStringTree1GetImageIndex

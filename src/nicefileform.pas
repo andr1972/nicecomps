@@ -71,6 +71,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure SpeedButton11Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure Splitter1CanOffset(Sender: TObject; var NewOffset: Integer;
@@ -78,6 +79,10 @@ type
     procedure VirtualStringTree1CompareNodes(Sender: TBaseVirtualTree; Node1,
       Node2: PVirtualNode; Column: TColumnIndex; var Result: Integer);
     procedure VirtualStringTree1DblClick(Sender: TObject);
+    procedure VirtualStringTree1Edited(Sender: TBaseVirtualTree;
+      Node: PVirtualNode; Column: TColumnIndex);
+    procedure VirtualStringTree1Editing(Sender: TBaseVirtualTree;
+      Node: PVirtualNode; Column: TColumnIndex; var Allowed: Boolean);
     procedure VirtualStringTree1FreeNode(Sender: TBaseVirtualTree;
       Node: PVirtualNode);
     procedure VirtualStringTree1GetImageIndex(Sender: TBaseVirtualTree;
@@ -286,6 +291,11 @@ begin
 
 end;
 
+procedure TForm2.SpeedButton11Click(Sender: TObject);
+begin
+  VirtualStringTree1.EditNode(VirtualStringTree1.GetFirst(false), 0);
+end;
+
 procedure TForm2.SpeedButton4Click(Sender: TObject);
 begin
   Chdir('..');
@@ -324,6 +334,18 @@ begin
       Chdir(Data^.FileName);
       Button3Click(nil);
     end else ShowMessage(Data^.FileName);
+end;
+
+procedure TForm2.VirtualStringTree1Edited(Sender: TBaseVirtualTree;
+  Node: PVirtualNode; Column: TColumnIndex);
+begin
+
+end;
+
+procedure TForm2.VirtualStringTree1Editing(Sender: TBaseVirtualTree;
+  Node: PVirtualNode; Column: TColumnIndex; var Allowed: Boolean);
+begin
+  Allowed:=true;
 end;
 
 procedure TForm2.VirtualStringTree1FreeNode(Sender: TBaseVirtualTree;

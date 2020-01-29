@@ -7,7 +7,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus,
-  ComboEx, ExtCtrls, Buttons, fgl, VirtualTrees;
+  ComboEx, ExtCtrls, Buttons, fgl, VirtualTrees, Messages;
 
 type
   PTreeData = ^TTreeData;
@@ -71,7 +71,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure SpeedButton11Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure Splitter1CanOffset(Sender: TObject; var NewOffset: Integer;
@@ -79,10 +78,6 @@ type
     procedure VirtualStringTree1CompareNodes(Sender: TBaseVirtualTree; Node1,
       Node2: PVirtualNode; Column: TColumnIndex; var Result: Integer);
     procedure VirtualStringTree1DblClick(Sender: TObject);
-    procedure VirtualStringTree1Edited(Sender: TBaseVirtualTree;
-      Node: PVirtualNode; Column: TColumnIndex);
-    procedure VirtualStringTree1Editing(Sender: TBaseVirtualTree;
-      Node: PVirtualNode; Column: TColumnIndex; var Allowed: Boolean);
     procedure VirtualStringTree1FreeNode(Sender: TBaseVirtualTree;
       Node: PVirtualNode);
     procedure VirtualStringTree1GetImageIndex(Sender: TBaseVirtualTree;
@@ -180,7 +175,7 @@ var
   sr: TSearchRec;
 begin
   items.Clear;
-  if FindFirst('*', faAnyFile, sr) = 0 then
+  if FindFirst(path, faAnyFile, sr) = 0 then
     repeat
       if (sr.Name = '.') or (sr.Name = '..') then
         continue;
@@ -211,12 +206,12 @@ begin
     CurrentItems[i].Copy(XData);
   end;
   VirtualStringTree1.SortTree(0, sdAscending);
-  for i:=0 to CurrentItems.Count-1 do
+  {for i:=0 to CurrentItems.Count-1 do
   begin
     XNode := VST.AddChild(nil);
     XData := VST.GetNodeData(XNode);
     CurrentItems[i].Copy(XData);
-  end;
+  end;}
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);
@@ -291,11 +286,6 @@ begin
 
 end;
 
-procedure TForm2.SpeedButton11Click(Sender: TObject);
-begin
-  VirtualStringTree1.EditNode(VirtualStringTree1.GetFirst(false), 0);
-end;
-
 procedure TForm2.SpeedButton4Click(Sender: TObject);
 begin
   Chdir('..');
@@ -328,24 +318,11 @@ var
   Data: PTreeData;
 begin
   Data := (Sender as TBaseVirtualTree).GetNodeData(VirtualStringTree1.FocusedNode);
-  if Data=nil then ShowMessage('FocusedNode=nil')
-  else if Data^.IsDirectory then
+  if Data^.IsDirectory then
     begin
       Chdir(Data^.FileName);
       Button3Click(nil);
     end else ShowMessage(Data^.FileName);
-end;
-
-procedure TForm2.VirtualStringTree1Edited(Sender: TBaseVirtualTree;
-  Node: PVirtualNode; Column: TColumnIndex);
-begin
-
-end;
-
-procedure TForm2.VirtualStringTree1Editing(Sender: TBaseVirtualTree;
-  Node: PVirtualNode; Column: TColumnIndex; var Allowed: Boolean);
-begin
-  Allowed:=true;
 end;
 
 procedure TForm2.VirtualStringTree1FreeNode(Sender: TBaseVirtualTree;

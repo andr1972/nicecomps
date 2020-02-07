@@ -15,6 +15,7 @@ type
   TCloseEnum = (clClose, clCloseAllSave, clCloseAllDiscard, clNo, clCancel, clError);
   TConsiderEnum = (coCanClose, coCanSave, coSaveAs);
 
+  TActivateEvent = procedure(Control: TNicePages; Index: integer) of object;
   TBeforeCloseQuery = procedure(Control: TNicePages; Index: integer;
     var Consider: TConsiderEnum) of object;
   TCloseQueryEvent = procedure(Control: TNicePages; Index: integer;
@@ -109,6 +110,7 @@ type
     FOnCloseQuery: TCloseQueryEvent;
     FOnClose: TCloseEvent;
     FOnDrawTab: TDrawTabEvent;
+    FOnActivateSheet: TActivateEvent;
     procedure DrawHelper(Index: integer; IsActive: boolean; ACanvas: TCanvas;
       var R: TRect; var DefaultDraw: boolean);
     procedure ActivateCurrent;
@@ -156,6 +158,7 @@ type
     property OnCloseQuery: TCloseQueryEvent read FOnCloseQuery write FOnCloseQuery;
     property OnClose: TCloseEvent read FOnClose write FOnClose;
     property OnDrawTab: TDrawTabEvent read FOnDrawTab write FOnDrawTab;
+    property OnActivateSheet: TActivateEvent read FOnActivateSheet write FOnActivateSheet;
     property Align;
   end;
 
@@ -829,6 +832,8 @@ begin
   Invalidate;
   if (sheet.FocusedControl<>nil) then
     sheet.FocusedControl.SetFocus;
+  if Assigned(FOnActivateSheet) then
+     FOnActivateSheet(self, FTabs.FPageIndex);
 end;
 
 procedure TNicePages.SetPageIndex(AValue: integer);
